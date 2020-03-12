@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Load the AJAX API-->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', {
+      'packages': ['corechart']
+    });
+
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawVisualization);
+
+    // Callback that creates and populates a data table,
+    // instantiates the pie chart, passes in the data and
+    // draws it.
+    function drawVisualization() {
+
+      // Create the data table.
+      var data = new google.visualization.arrayToDataTable([
+        ['Heures', 'Ma consommation en KwH', ], //ligne chaque 
+        ['00H00', 2.8, ],
+        ['', 2.2, ],
+        ['02H00', 0.7, ],
+        ['', 0.6, ],
+        ['04H00', 1.5, ],
+        ['', 0.6, ],
+        ['05H00', 0.5, ],
+        ['', 0.7, ],
+        ['21HOO', 1, ],
+        ['04H00', 1.5, ],
+        ['04H00', 1.5, ],
+
+        ['08H00', 2, ],
+        ['12H00', 0, ],
+        ['16H00', 1, ]
+      ]);
+
+
+      // Set chart options
+      var options = {
+        'title': 'Consommation en kwH par jour',
+        'width': 800,
+        'height': 600,
+        //Axe Vertical ou ordonnée
+        vAxis: {
+          title: 'KwH '
+        },
+        //Axe Horizontal ou   abcisse
+        hAxis: {
+          title: 'Heures de la journée'
+        },
+        seriesType: 'bars',
+        series: {
+          1: {
+            type: 'line'
+          }
+        }
+      };
+
+      // Instantiate and draw our chart, passing in some options.
+      var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+
+  </script>
+</head>
+
+<body>
+  <div id="chart_div"></div>
+
+</body>
+
+</html>
